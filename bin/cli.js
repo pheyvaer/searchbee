@@ -23,6 +23,11 @@ program
 
 program.parse(process.argv);
 
+/**
+ * This method hanldes the "server" command of the CLI.
+ * @param cmdObj The object with the options that have been passed.
+ * @returns {Promise<void>}
+ */
 async function doServer(cmdObj) {
   if ((!cmdObj.sources || cmdObj.sources.length === 0) && !cmdObj.file) {
     console.error('Please provide at least one source via -s, --sources or one file via -f, --file.');
@@ -51,6 +56,11 @@ async function doServer(cmdObj) {
   server.start();
 }
 
+/**
+ * This method handles the "index" command of the CLI.
+ * @param cmdObj The object with the options that have been passed.
+ * @returns {Promise<void>}
+ */
 async function doIndex(cmdObj) {
   if (!cmdObj.sources || cmdObj.sources.length === 0) {
     console.error('Please provide at least one source via -s, --sources.');
@@ -70,6 +80,12 @@ async function doIndex(cmdObj) {
   fs.writeFile(cmdObj.file, serializedIndex, 'utf-8');
 }
 
+/**
+ * This method creates an array from a comma-separated list.
+ * @param value The comma-separated list.
+ * @param dummyPrevious
+ * @returns {*|string[]}
+ */
 function commaSeparatedList(value, dummyPrevious) {
   return value.split(',');
 }
