@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/pheyvaer/searchbee.git"
   },
+  "bin": {
+    "searchbee": "bin/cli.js"
+  },
   "keywords": [
     "search",
     "api",
@@ -26,7 +29,9 @@
   },
   "homepage": "https://github.com/pheyvaer/searchbee#readme",
   "dependencies": {
+    "commander": "^5.0.0",
     "fastify": "^2.13.0",
+    "fs-extra": "^9.0.0",
     "graphql-ld": "^1.0.1",
     "graphql-ld-comunica": "^1.0.1",
     "lunr": "^2.3.8"
