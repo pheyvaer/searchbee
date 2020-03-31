@@ -1,0 +1,34 @@
+{
+  "name": "searchbee",
+  "version": "0.0.1",
+  "description": "Search API based on external knowledge graphs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pheyvaer/searchbee.git"
+  },
+  "keywords": [
+    "search",
+    "api",
+    "knowledge",
+    "graph",
+    "linked",
+    "data",
+    "rdf"
+  ],
+  "author": "Pieter Heyvaert (https://pieterheyvaert.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pheyvaer/searchbee/issues"
+  },
+  "homepage": "https://github.com/pheyvaer/searchbee#readme",
+  "dependencies": {
+    "fastify": "^2.13.0",
+    "graphql-ld": "^1.0.1",
+    "graphql-ld-comunica": "^1.0.1",
+    "lunr": "^2.3.8"
+  }
+}
