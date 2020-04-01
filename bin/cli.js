@@ -12,6 +12,7 @@ program
   .option('-s, --sources <string>', 'Comma-separated list of sources to use for the index.', commaSeparatedList)
   .option('-r, --root <string>', 'Root path of the server', '/')
   .option('-f, --file <string>', 'Path to serialized index.')
+  .option('-l, --label <string>', 'Predicate used for index.', 'http://www.w3.org/2000/01/rdf-schema#label')
   .option('-v, --verbose', 'Turn on logging.')
   .description('Start a server.')
   .action(doServer);
@@ -20,6 +21,7 @@ program
   .command('index')
   .option('-s, --sources <string>', 'Comma-separated list of sources to use for the index.', commaSeparatedList)
   .option('-f, --file <string>', 'Path to write serialized index.')
+  .option('-l, --label <string>', 'Predicate used for index.', 'http://www.w3.org/2000/01/rdf-schema#label')
   .description('Generate index and write to file.')
   .action(doIndex);
 
@@ -66,7 +68,7 @@ async function doServer(cmdObj) {
 
     index = load(deserializedData);
   } else {
-    const data = await fetchData(cmdObj.sources);
+    const data = await fetchData(cmdObj.sources, cmdObj.label);
 
     if (logger) {
       logger.info('Data fetched.');
@@ -105,7 +107,7 @@ async function doIndex(cmdObj) {
     process.exit(1);
   }
 
-  const data = await fetchData(cmdObj.sources);
+  const data = await fetchData(cmdObj.sources, cmdObj.label);
 
   if (logger) {
     logger.info('Data fetched.');
