@@ -39,6 +39,14 @@ async function doServer(cmdObj) {
     process.exit(1);
   }
 
+  const path = cmdObj.root;
+  const port = parseInt(cmdObj.port);
+
+  if (isNaN(port)) {
+    console.error(`Provided port ${cmdObj.port} is invalid.`);
+    process.exit(1);
+  }
+
   let index;
 
   if (cmdObj.file) {
@@ -52,7 +60,7 @@ async function doServer(cmdObj) {
     console.log("Index built.");
   }
 
-  const server = new Server(index, {logger: true});
+  const server = new Server(index, {port, path, logger: true});
   server.start();
 }
 
