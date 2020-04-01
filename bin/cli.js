@@ -4,6 +4,7 @@ const { program } = require('commander');
 const { Server, fetchData, lunr } = require('../index');
 const { build, load, serialize } = lunr;
 const fs = require('fs-extra');
+const pino = require('pino');
 
 program
   .command('server')
@@ -30,7 +31,11 @@ program.parse(process.argv);
  * @returns {Promise<void>}
  */
 async function doServer(cmdObj) {
-  const verbose = cmdObj.verbose;
+  let logger;
+
+  if (cmdObj.verbose) {
+    logger = createLogger();
+  }
 
   if ((!cmdObj.sources || cmdObj.sources.length === 0) && !cmdObj.file) {
     console.error('Please provide at least one source via -s, --sources or one file via -f, --file.');
@@ -55,25 +60,26 @@ async function doServer(cmdObj) {
   if (cmdObj.file) {
     const deserializedData = await fs.readFile(cmdObj.file, 'utf-8');
 
-    if (verbose) {
-      console.log('Index loaded from file.');
+    if (logger) {
+      logger.info('Index loaded from file.');
     }
+
     index = load(deserializedData);
   } else {
     const data = await fetchData(cmdObj.sources);
 
-    if (verbose) {
-      console.log('Data fetched.');
+    if (logger) {
+      logger.info('Data fetched.');
     }
 
     index = build(data);
 
-    if (verbose) {
-      console.log("Index built.");
+    if (logger) {
+      logger.info("Index built.");
     }
   }
 
-  const server = new Server(index, {port, path, logger: true});
+  const server = new Server(index, {port, path, logger});
   server.start();
 }
 
@@ -83,7 +89,11 @@ async function doServer(cmdObj) {
  * @returns {Promise<void>}
  */
 async function doIndex(cmdObj) {
-  const verbose = cmdObj.verbose;
+  let logger;
+
+  if (cmdObj.verbose) {
+    logger = createLogger();
+  }
 
   if (!cmdObj.sources || cmdObj.sources.length === 0) {
     console.error('Please provide at least one source via -s, --sources.');
@@ -97,14 +107,14 @@ async function doIndex(cmdObj) {
 
   const data = await fetchData(cmdObj.sources);
 
-  if (verbose) {
-    console.log('Data fetched.');
+  if (logger) {
+    logger.info('Data fetched.');
   }
 
   const index = build(data);
 
-  if (verbose) {
-    console.log("Index built.");
+  if (logger) {
+    logger.info("Index built.");
   }
 
   const serializedIndex = serialize(index);
@@ -119,4 +129,13 @@ async function doIndex(cmdObj) {
  */
 function commaSeparatedList(value, dummyPrevious) {
   return value.split(',');
+}
+
+function createLogger() {
+  return pino({
+    prettyPrint: {
+      colorize: true,
+      ignore: 'pid,hostname'
+    }
+  })
 }

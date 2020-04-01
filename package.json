@@ -35,6 +35,8 @@
     "fs-extra": "^9.0.0",
     "graphql-ld": "^1.0.1",
     "graphql-ld-comunica": "^1.0.1",
-    "lunr": "^2.3.8"
+    "lunr": "^2.3.8",
+    "pino": "^6.0.0",
+    "pino-pretty": "^3.6.1"
   }
 }
