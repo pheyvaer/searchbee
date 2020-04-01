@@ -1,7 +1,7 @@
 # :honeybee: Searchbee
 
 This library and command line interface (CLI) start a server that 
-offers a search API op top of knowledge graphs.
+offers a search API on top of knowledge graphs.
 
 A lot of knowledge graph are hosted on the Web
 where IRIs are used to uniquely identified resources.
