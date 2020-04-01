@@ -4,7 +4,7 @@ This library and command line interface (CLI) start a server that
 offers a search API on top of knowledge graphs.
 
 A lot of knowledge graph are hosted on the Web
-where IRIs are used to uniquely identified resources.
+where IRIs are used to uniquely identify resources.
 In certain use cases when looking for the IRI of a specific resource 
 users want to search for it
 based on its label or description.
