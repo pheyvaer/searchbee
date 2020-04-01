@@ -11,6 +11,7 @@ program
   .option('-s, --sources <string>', 'Comma-separated list of sources to use for the index.', commaSeparatedList)
   .option('-r, --root <string>', 'Root path of the server', '/')
   .option('-f, --file <string>', 'Path to serialized index.')
+  .option('-v, --verbose', 'Turn on logging.')
   .description('Start a server.')
   .action(doServer);
 
@@ -29,6 +30,8 @@ program.parse(process.argv);
  * @returns {Promise<void>}
  */
 async function doServer(cmdObj) {
+  const verbose = cmdObj.verbose;
+
   if ((!cmdObj.sources || cmdObj.sources.length === 0) && !cmdObj.file) {
     console.error('Please provide at least one source via -s, --sources or one file via -f, --file.');
     process.exit(1);
@@ -51,13 +54,23 @@ async function doServer(cmdObj) {
 
   if (cmdObj.file) {
     const deserializedData = await fs.readFile(cmdObj.file, 'utf-8');
-    console.log('Index loaded from file.');
+
+    if (verbose) {
+      console.log('Index loaded from file.');
+    }
     index = load(deserializedData);
   } else {
     const data = await fetchData(cmdObj.sources);
-    console.log('Data fetched.');
+
+    if (verbose) {
+      console.log('Data fetched.');
+    }
+
     index = build(data);
-    console.log("Index built.");
+
+    if (verbose) {
+      console.log("Index built.");
+    }
   }
 
   const server = new Server(index, {port, path, logger: true});
@@ -70,6 +83,8 @@ async function doServer(cmdObj) {
  * @returns {Promise<void>}
  */
 async function doIndex(cmdObj) {
+  const verbose = cmdObj.verbose;
+
   if (!cmdObj.sources || cmdObj.sources.length === 0) {
     console.error('Please provide at least one source via -s, --sources.');
     process.exit(1);
@@ -81,9 +96,17 @@ async function doIndex(cmdObj) {
   }
 
   const data = await fetchData(cmdObj.sources);
-  console.log('Data fetched.');
+
+  if (verbose) {
+    console.log('Data fetched.');
+  }
+
   const index = build(data);
-  console.log("Index built.");
+
+  if (verbose) {
+    console.log("Index built.");
+  }
+
   const serializedIndex = serialize(index);
   fs.writeFile(cmdObj.file, serializedIndex, 'utf-8');
 }
