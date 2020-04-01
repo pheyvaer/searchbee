@@ -38,7 +38,7 @@ Currently, the search index is build based on the triples with predicate
    
 ### Generate index
 
-By generating the index before staring the server 
+By generating an index before staring the server 
 allows you to reuse the index when restarting the server.
 This removes the need to create the index every time the server is started,
 which might be time-consuming for big sources.
@@ -50,6 +50,14 @@ such as TPF servers, RDF files, and SPARQL endpoints, and
 
 2. Execute Searchbee via `searchbee server -f [path]` 
    where `path` points to the file where the index is stored.
+   
+#### Example
+
+1. `searchbee index -s https://ruben.verborgh.org/profile/#me -f index.json`
+  generates an index based on the data at `https://ruben.verborgh.org/profile/#me`
+  and stores in the file `index.json`.
+2. `searchbee server -f index.json`
+  starts a server based on the index in `index.json`.
    
 ## Development
 
