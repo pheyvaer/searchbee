@@ -25,6 +25,8 @@ such as TPF servers, RDF files, and SPARQL endpoints.
 where `term` is the search term.
 The output is a JSON array with the IRIs of the resources and 
 the scores of how closely the resources match the search term.
+The scores are between 0 and 10.
+A higher score means a better match.
 
 Currently, the search index is build based on the triples with predicate
 `http://www.w3.org/2000/01/rdf-schema#label`.
