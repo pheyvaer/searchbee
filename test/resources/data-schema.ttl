@@ -1,0 +1,2 @@
+<http://example.org/ash> <http://schema.org/name> "Ash".
+<http://example.org/misty> <http://schema.org/name> "Misty".

@@ -4,7 +4,7 @@
   "description": "Search API based on external knowledge graphs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -38,5 +38,8 @@
     "graphql-ld-comunica": "^1.0.1",
     "pino": "^6.0.0",
     "pino-pretty": "^3.6.1"
+  },
+  "devDependencies": {
+    "mocha": "^7.1.1"
   }
 }
