@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 const { program } = require('commander');
-const { Server, fetchData, lunr } = require('../index');
-const { build, load, serialize } = lunr;
+const { Server, fetchData, searchIndex } = require('../index');
+const { build, load, serialize } = searchIndex;
 const fs = require('fs-extra');
 const pino = require('pino');
 
