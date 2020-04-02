@@ -1,0 +1,2 @@
+<http://example.org/ash> <http://www.w3.org/2000/01/rdf-schema#label> "Ash".
+<http://example.org/misty> <http://www.w3.org/2000/01/rdf-schema#label> "Misty".

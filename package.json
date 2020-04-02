@@ -4,7 +4,7 @@
   "description": "Search API based on external knowledge graphs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -32,11 +32,14 @@
     "@comunica/actor-init-sparql-hdt": "^1.5.4",
     "commander": "^5.0.0",
     "fastify": "^2.13.0",
+    "flexsearch": "^0.6.32",
     "fs-extra": "^9.0.0",
     "graphql-ld": "^1.0.1",
     "graphql-ld-comunica": "^1.0.1",
-    "lunr": "^2.3.8",
     "pino": "^6.0.0",
     "pino-pretty": "^3.6.1"
+  },
+  "devDependencies": {
+    "mocha": "^7.1.1"
   }
 }

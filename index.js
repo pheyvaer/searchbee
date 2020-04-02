@@ -1,9 +1,9 @@
 const fetchData = require('./lib/fetch-data');
-const lunr = require('./lib/lunr-helpers');
+const searchIndex = require('./lib/search-index-helpers');
 const Server = require('./lib/server');
 
 module.exports = {
   Server,
   fetchData,
-  lunr
+  searchIndex
 };

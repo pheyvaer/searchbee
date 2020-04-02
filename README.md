@@ -23,13 +23,11 @@ where `sources` is a comma-separated list of sources,
 such as TPF servers, RDF files, and SPARQL endpoints.
 2. Search for the resources via `curl http://localhost:8080/?q=[term]`
 where `term` is the search term.
-The output is a JSON array with the IRIs of the resources and 
-the scores of how closely the resources match the search term.
-The scores are between 0 and 10.
-A higher score means a better match.
+The output is a JSON array with the IRIs of the matched resources.
 
-Currently, the search index is build based on the triples with predicate
+Note that the search index is by default build based on the triples with predicate
 `http://www.w3.org/2000/01/rdf-schema#label`.
+This con be configured through the option `-l, --label`.
 
 #### Example
 
