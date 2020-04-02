@@ -27,7 +27,7 @@ The output is a JSON array with the IRIs of the matched resources.
 
 Note that the search index is by default build based on the triples with predicate
 `http://www.w3.org/2000/01/rdf-schema#label`.
-This con be configured through the option `-l, --label`.
+This can be configured through the option `-l, --label`.
 
 #### Example
 
