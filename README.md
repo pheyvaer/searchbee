@@ -11,8 +11,6 @@ based on its label or description.
 This library and CLI offer such a search functionality on top of these knowledge graphs.
 It starts a server that accepts a single GET request with the searched term.
 
-rmleditor
-
 ## Usage
 
 1. Install Searchbee via `npm -g i searchbee`.
@@ -66,6 +64,13 @@ such as TPF servers, RDF files, and SPARQL endpoints, and
 1. Install dependencies via `npm i`.
 2. Make changes.
 3. Execute Searchbee via `node ./bin/cli.js`.
+
+## Documentation
+
+We use [Vale](https://errata-ai.gitbook.io/vale/) to lint the documentation.
+
+1. Install [Vale](https://errata-ai.gitbook.io/vale/getting-started/installation)
+2. Execute `npm run lint:docs` to lint the documentation.
 
 ## License
 
