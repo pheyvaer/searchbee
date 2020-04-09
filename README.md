@@ -27,7 +27,7 @@ The output is a JSON array with the IRIs of the matched resources.
 
 Note that the search index is by default build based on the triples with predicate
 `http://www.w3.org/2000/01/rdf-schema#label`.
-This can be configured through the option `-l, --label`.
+This is overwritten through the option `-l, --label`.
 
 #### Example
 
@@ -40,16 +40,16 @@ This can be configured through the option `-l, --label`.
 
 By generating an index before staring the server 
 allows you to reuse the index when restarting the server.
-This removes the need to create the index every time the server is started,
+This removes the need to create the index every time you start the server,
 which might be time-consuming for big sources.
 
 1. Execute Searchbee via `searchbee index -s [sources] -f [path]` 
 where `sources` is a comma-separated list of sources, 
 such as TPF servers, RDF files, and SPARQL endpoints, and
-`path` points to the file where the index is stored.
+`path` points to the file that stores the index.
 
 2. Execute Searchbee via `searchbee server -f [path]` 
-   where `path` points to the file where the index is stored.
+   where `path` points to the file that stores the index.
    
 #### Example
 
@@ -64,6 +64,13 @@ such as TPF servers, RDF files, and SPARQL endpoints, and
 1. Install dependencies via `npm i`.
 2. Make changes.
 3. Execute Searchbee via `node ./bin/cli.js`.
+
+## Documentation
+
+We use [Vale](https://errata-ai.gitbook.io/vale/) to lint the documentation.
+
+1. Install [Vale](https://errata-ai.gitbook.io/vale/getting-started/installation)
+2. Execute `npm run lint:docs` to lint the documentation.
 
 ## License
 
