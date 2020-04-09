@@ -4,7 +4,8 @@
   "description": "Search API based on external knowledge graphs",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "lint:docs": "vale README.md"
   },
   "repository": {
     "type": "git",
