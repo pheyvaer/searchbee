@@ -7,10 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [2.0.1] - 2020-04-19
+
+### Fixed
+- Import and export of index and docs
+
 ## [2.0.0] - 2020-04-19
 
 ### Added
 - Vale for linting the documentation.
 - Allow including labels in results (see [issue 19](https://github.com/pheyvaer/searchbee/issues/19))
 
+[2.0.1] https://github.com/pheyvaer/searchbee/compare/v2.0.0...v2.0.1
 [2.0.0] https://github.com/pheyvaer/searchbee/compare/v1.1.0...v2.0.0
