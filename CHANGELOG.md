@@ -9,3 +9,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - Vale for linting the documentation.
+- Allow including labels in results (see [issue 19](https://github.com/pheyvaer/searchbee/issues/19))
