@@ -34,7 +34,7 @@
     "commander": "^5.0.0",
     "fastify": "^2.13.0",
     "flexsearch": "^0.6.32",
-    "fs-extra": "^9.0.0",
+    "fs-extra": "^10.0.0",
     "graphql-ld": "^1.0.1",
     "graphql-ld-comunica": "^1.0.1",
     "pino": "^6.0.0",
