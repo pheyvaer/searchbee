@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## Changed
+- Update Fastify dependency.
+
 ## [2.1.1] - 2022-11-08
 
 ## Changed
