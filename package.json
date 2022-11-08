@@ -32,7 +32,7 @@
   "dependencies": {
     "@comunica/actor-init-sparql-hdt": "^1.5.4",
     "commander": "^5.0.0",
-    "fastify": "^2.13.0",
+    "fastify": "^4.9.2",
     "flexsearch": "^0.6.32",
     "fs-extra": "^9.0.0",
     "graphql-ld": "^1.4.0",
