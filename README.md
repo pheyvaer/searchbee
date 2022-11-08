@@ -25,9 +25,15 @@ such as TPF servers, RDF files, and SPARQL endpoints.
 where `term` is the search term.
 The output is a JSON array with the IRIs of the matched resources.
 
-Note that the search index is by default build based on the triples with predicate
+The search index is by default build based on the triples with predicate
 `http://www.w3.org/2000/01/rdf-schema#label`.
 This is overwritten through the option `-l, --label`.
+The search index considers by default all resources that are found.
+This is overwritten through the option `--resources`.
+In this case the index only considers the resources that match the sources.
+For example, if your sources are `http://example.org/A` and `http://example.org/B`,
+then the index is built only with triples about these two resources.
+Even if the sources return for example triples about `http://example.org/C`.
 
 #### Example
 

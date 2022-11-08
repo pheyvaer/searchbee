@@ -13,6 +13,7 @@ program
   .option('-r, --root <string>', 'Root path of the server', '/')
   .option('-f, --file <string>', 'Path to serialized index.')
   .option('-l, --label <string>', 'Predicate used for index.', 'http://www.w3.org/2000/01/rdf-schema#label')
+  .option('--resources', 'Only consider resources that are in the list of sources. This is useful when querying WebIDs.')
   .option('-v, --verbose', 'Turn on logging.')
   .description('Start a server.')
   .action(doServer);
@@ -22,6 +23,7 @@ program
   .option('-s, --sources <string>', 'Comma-separated list of sources to use for the index.', commaSeparatedList)
   .option('-f, --file <string>', 'Path to write serialized index.')
   .option('-l, --label <string>', 'Predicate used for index.', 'http://www.w3.org/2000/01/rdf-schema#label')
+  .option('--resources', 'Only consider resources that are in the list of sources. This is useful when querying WebIDs.')
   .description('Generate index and write to file.')
   .action(doIndex);
 
@@ -68,7 +70,13 @@ async function doServer(cmdObj) {
 
     index = load(deserializedData);
   } else {
-    const data = await fetchData(cmdObj.sources, cmdObj.label);
+    let webids;
+
+    if (cmdObj.resources) {
+      webids =  cmdObj.sources
+    }
+
+    const data = await fetchData(cmdObj.sources, cmdObj.label, webids);
 
     if (logger) {
       logger.info('Data fetched.');
@@ -107,7 +115,13 @@ async function doIndex(cmdObj) {
     process.exit(1);
   }
 
-  const data = await fetchData(cmdObj.sources, cmdObj.label);
+  let webids;
+
+  if (cmdObj.resources) {
+    webids =  cmdObj.sources
+  }
+
+  const data = await fetchData(cmdObj.sources, cmdObj.label, webids);
 
   if (logger) {
     logger.info('Data fetched.');

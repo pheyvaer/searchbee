@@ -1,6 +1,6 @@
 const assert = require('assert');
 const { Server, fetchData, searchIndex } = require('../index');
-const { build, load, serialize } = searchIndex;
+const { build } = searchIndex;
 const fs = require('fs');
 const http = require('http');
 
@@ -116,6 +116,21 @@ describe('Server', () => {
           await server.close();
         });
       });
+    });
+
+    it('should return only given webids', async () => {
+      const data = await fetchData(['http://localhost:8081/resources/data.ttl'], undefined, ['http://example.org/ash']);
+      const index = build(data);
+      const server = new Server(index);
+      await server.start();
+
+      let result = await get('http://localhost:8080/?q=ash');
+      assert.deepEqual(result, ['http://example.org/ash']);
+
+      result = await get('http://localhost:8080/?q=misty');
+      assert.deepEqual(result, []);
+
+      await server.close();
     });
 
     after(() => {
