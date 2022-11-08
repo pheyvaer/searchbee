@@ -1,6 +1,6 @@
 {
   "name": "searchbee",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Search API based on external knowledge graphs",
   "main": "index.js",
   "scripts": {
