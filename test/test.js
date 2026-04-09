@@ -1,6 +1,6 @@
 const assert = require('assert');
-const { Server, fetchData, searchIndex } = require('../index');
-const { build } = searchIndex;
+const {Server, fetchData, searchIndex} = require('../index');
+const {build} = searchIndex;
 const fs = require('fs');
 const http = require('http');
 
@@ -11,7 +11,7 @@ describe('Server', () => {
 
     before(() => {
       server = http.createServer(function (req, res) {
-        fs.readFile(__dirname + req.url, function (err,data) {
+        fs.readFile(__dirname + req.url, function (err, data) {
           if (err) {
             res.writeHead(404);
             res.end(JSON.stringify(err));
@@ -49,6 +49,18 @@ describe('Server', () => {
           id: 'http://example.org/ash',
           label: 'Ash'
         }]);
+
+        await server.close();
+      });
+
+      it('substring', async () => {
+        const data = await fetchData(['http://localhost:8081/resources/data.ttl']);
+        const index = build(data);
+        const server = new Server(index);
+        await server.start();
+
+        let result = await get('http://localhost:8080/?q=sh');
+        assert.deepEqual(result, ['http://example.org/ash']);
 
         await server.close();
       });
