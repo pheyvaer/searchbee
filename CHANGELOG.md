@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## [3.0.0] - 2026-04-09
+
 ## Changed
 - Support substring search
 
@@ -39,6 +41,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Vale for linting the documentation.
 - Allow including labels in results (see [issue 19](https://github.com/pheyvaer/searchbee/issues/19))
 
+[3.0.0]: https://github.com/pheyvaer/searchbee/compare/v2.1.2...v3.0.0
 [2.1.2]: https://github.com/pheyvaer/searchbee/compare/v2.1.1...v2.1.2
 [2.1.1]: https://github.com/pheyvaer/searchbee/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/pheyvaer/searchbee/compare/v2.0.1]...v2.1.0
